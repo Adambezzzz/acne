@@ -1,6 +1,6 @@
 import type {Metadata} from 'next';
 import { inter } from '@/app/ui/fonts';
-import '@app/global.css';
+import '@/app/globals.css';
 
 export const metadata: Metadata  = {
 title: 'ACNE'
