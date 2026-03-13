@@ -1,0 +1,27 @@
+services:
+  database:
+    image: postgres:16
+    container_name: acne_postgres
+    restart: unless-stopped
+    ports: 
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: acne_database
+      POSTGRES_USER: acne_user
+      POSTGRES_PASSWORD: acne_password
+    volumes: 
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U acne_user -d acne_database" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:
+
+
+  # docker compose up => sobe o container 
+  # docker compose up -d => sobe o container em segundo plano
+  # docker compose down => baixa o container
+  # docker compose down -v => baixa o ccontainer e destroi o volume
